@@ -6,7 +6,7 @@ const LayoutAnimation = () => {
   const size = 50;
 
   return (
-    <div className="w-2/3 aspect-square border flex justify-center items-center relative">
+    <div className="w-1/2 aspect-square border flex justify-center items-center relative">
       <motion.div
         layout
         className="bg-yellow-400"
