@@ -2,58 +2,72 @@ import odyssey from "../assets/odyssey.jpeg";
 import rabbits from "../assets/rabbits.jpeg";
 import mountains from "../assets/mountains.jpeg";
 import pirates from "../assets/pirates.jpeg";
+import { useState } from "react";
+import GameModal from "../components/GameModal";
+import GamePreview from "../components/GamePreview";
+
+export type Game = {
+  name: string;
+  description: string;
+  extendedDescription: string;
+  img: string;
+};
 
 const GamesAnimation = () => {
-  const games = [
-    {
-      id: 1,
-      name: "Tic Tac Toe",
-      description: "A simple game of Tic Tac Toe",
-      img: odyssey,
-    },
-    {
-      id: 2,
-      name: "Connect Four",
-      description: "A simple game of Connect Four",
-      img: rabbits,
-    },
-    {
-      id: 3,
-      name: "Chess",
-      description: "A simple game of Chess",
-      img: pirates,
-    },
-    {
-      id: 4,
-      name: "Checkers",
-      description: "A simple game of Checkers",
-      img: mountains,
-    },
-  ];
+  const [selectedGame, setSelectedGame] = useState<number | null>(null);
 
   return (
-    <div className="w-2/3">
-      {games.map(({ id, name, description, img }, index) => (
-        <div
-          key={id}
-          className={`w-full py-2 flex items-center justify-between ${
-            index < games.length - 1 ? "border-b" : ""
-          }`}
-        >
-          <div className="flex items-center gap-4">
-            <img className="h-12 rounded" src={img} alt="" />
-            <div>
-              <p className="text-sm font-medium">{name}</p>
-              <p className="text-xs text-gray-500">{description}</p>
-            </div>
-          </div>
-          <button className="bg-gray-100 text-blue-500 font-medium px-4 py-1 rounded-full text-sm">
-            Get
-          </button>
-        </div>
-      ))}
-    </div>
+    <>
+      {selectedGame !== null && (
+        <GameModal
+          setSelectedGame={setSelectedGame}
+          game={games[selectedGame]}
+        />
+      )}
+      <div className="w-2/3">
+        {games.map((game, index) => (
+          <GamePreview
+            game={game}
+            key={game.name}
+            index={index}
+            setSelectedGame={setSelectedGame}
+            showBottomBorder={index !== games.length - 1}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
 export default GamesAnimation;
+
+const games: Game[] = [
+  {
+    name: "The Odyssey",
+    description: "An epic journey filled with adventure and challenges.",
+    extendedDescription:
+      "Embark on 'The Odyssey,' a grand tale of courage, resilience, and discovery. Navigate through trials and tribulations as you explore uncharted lands, encounter mythical creatures, and uncover the secrets of an ancient world. Every step brings new challenges and unforgettable experiences.",
+    img: odyssey,
+  },
+  {
+    name: "Angry Rabbits",
+    description: "A thrilling adventure with mischievous rabbits.",
+    extendedDescription:
+      "Dive into the chaotic world of 'Angry Rabbits,' where mischief and mayhem abound. These feisty rabbits are on a mission, and it's up to you to join the fun. With quick reflexes and strategic moves, you'll guide them through wild challenges and hilarious encounters.",
+    img: rabbits,
+  },
+  {
+    name: "Pirates of the Jungle",
+    description: "A swashbuckling jungle adventure with daring pirates.",
+    extendedDescription:
+      "Set sail with 'Pirates of the Jungle,' a thrilling escapade where untamed wilderness meets the high seas. Battle foes, uncover hidden treasures, and navigate treacherous jungle terrain in this action-packed journey of adventure and camaraderie.",
+    img: pirates,
+  },
+  {
+    name: "Lost in the Mountains",
+    description: "A gripping tale of survival and discovery in the mountains.",
+    extendedDescription:
+      "Experience the breathtaking beauty and unforgiving challenges of 'Lost in the Mountains.' Test your survival instincts as you traverse rugged terrains, uncover hidden secrets, and overcome nature's obstacles in a story of endurance and triumph.",
+    img: mountains,
+  },
+];

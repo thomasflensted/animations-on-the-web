@@ -20,7 +20,7 @@ const HighLightedTabs = () => {
           onMouseOver={() => setHoveredTab(tab.id)}
         >
           {hoveredTab === tab.id ? (
-            <motion.div
+            <motion.span
               layoutId="tab-indicator"
               className="absolute inset-0 rounded-lg bg-black/5 px-4"
             />

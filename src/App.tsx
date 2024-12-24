@@ -4,7 +4,6 @@ import HighLightedTabs from "./animations/HighLightedTabs";
 import LayoutAnimation from "./animations/LayoutAnimation";
 import LayoutIdAnimation from "./animations/LayoutIdAnimation";
 import LoginBtn from "./animations/LoginBtn";
-import "./App.css";
 
 function App() {
   return (
