@@ -6,13 +6,6 @@ import { useState } from "react";
 import GameModal from "../components/GameModal";
 import GamePreview from "../components/GamePreview";
 
-export type Game = {
-  name: string;
-  description: string;
-  extendedDescription: string;
-  img: string;
-};
-
 const GamesAnimation = () => {
   const [selectedGame, setSelectedGame] = useState<number | null>(null);
 
@@ -40,6 +33,13 @@ const GamesAnimation = () => {
 };
 
 export default GamesAnimation;
+
+export type Game = {
+  name: string;
+  description: string;
+  extendedDescription: string;
+  img: string;
+};
 
 const games: Game[] = [
   {

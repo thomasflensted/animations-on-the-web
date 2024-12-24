@@ -25,12 +25,15 @@ const GameModal = ({ setSelectedGame, game }: Props) => {
         <div className="flex items-center gap-4">
           <motion.img
             layoutId={`img-${name}`}
-            className="h-12 rounded"
+            className="h-16 rounded"
             src={img}
             alt=""
           />
           <div>
-            <motion.p layoutId={`name-${name}`} className="text-sm font-medium">
+            <motion.p
+              layoutId={`name-${name}`}
+              className="text-base font-medium text-slate-700"
+            >
               {name}
             </motion.p>
             <motion.p
