@@ -5,19 +5,24 @@ import pirates from "../assets/pirates.jpeg";
 import { useState } from "react";
 import GameModal from "../components/GameModal";
 import GamePreview from "../components/GamePreview";
+import Backdrop from "../components/Backdrop";
 
 const GamesAnimation = () => {
   const [selectedGame, setSelectedGame] = useState<number | null>(null);
 
   return (
     <>
+      <Backdrop
+        isVisible={selectedGame !== null}
+        setSelectedGame={setSelectedGame}
+      />
       {selectedGame !== null && (
         <GameModal
           setSelectedGame={setSelectedGame}
           game={games[selectedGame]}
         />
       )}
-      <div className="w-2/3">
+      <div className="w-2/3 z-20">
         {games.map((game, index) => (
           <GamePreview
             game={game}

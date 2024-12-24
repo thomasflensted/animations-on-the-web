@@ -41,9 +41,12 @@ const GamePreview = ({
           </motion.p>
         </div>
       </div>
-      <button className="bg-gray-100 text-blue-500 font-medium px-4 py-1 rounded-full text-sm">
+      <motion.button
+        layoutId={`button-${name}`}
+        className="bg-gray-100 text-blue-500 font-medium px-4 py-1 rounded-full text-sm"
+      >
         Get
-      </button>
+      </motion.button>
     </motion.div>
   );
 };
