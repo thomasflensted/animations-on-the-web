@@ -11,15 +11,15 @@ const LayoutIdAnimation = () => {
     >
       {!shownRect ? (
         <motion.div
-          layoutId="rect"
+          layoutId="square"
           transition={{ type: "spring" }}
-          className="bg-yellow-400 h-12 aspect-square rounded"
+          className="bg-yellow-400 h-12 aspect-square rounded cursor-pointer"
         />
       ) : (
         <motion.div
-          layoutId="rect"
+          layoutId="square"
           transition={{ type: "spring" }}
-          className="bg-yellow-400 h-32 aspect-square rounded"
+          className="bg-yellow-400 h-32 aspect-square rounded cursor-pointer"
         />
       )}
     </div>

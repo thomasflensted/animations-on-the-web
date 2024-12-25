@@ -14,7 +14,7 @@ const GamesAnimation = () => {
     <>
       <Backdrop
         isVisible={selectedGame !== null}
-        setSelectedGame={setSelectedGame}
+        onClick={() => setSelectedGame(null)}
       />
       {selectedGame !== null && (
         <GameModal
@@ -22,7 +22,7 @@ const GamesAnimation = () => {
           game={games[selectedGame]}
         />
       )}
-      <div className="w-2/3 z-20">
+      <div className="w-1/3 z-20">
         {games.map((game, index) => (
           <GamePreview
             game={game}

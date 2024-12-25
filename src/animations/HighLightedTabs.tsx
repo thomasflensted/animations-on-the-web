@@ -12,20 +12,20 @@ const HighLightedTabs = () => {
   const [hoveredTab, setHoveredTab] = useState(1);
 
   return (
-    <div className="flex justify-between w-2/3">
+    <div className="flex justify-between w-1/3">
       {tabs.map((tab) => (
         <motion.p
           className="relative cursor-pointer px-2 py-1 text-sm outline-none transition-colors"
           key={tab.id}
           onMouseOver={() => setHoveredTab(tab.id)}
         >
+          <span className="font-light">{tab.title}</span>
           {hoveredTab === tab.id ? (
             <motion.span
               layoutId="tab-indicator"
               className="absolute inset-0 rounded-lg bg-black/5 px-4"
             />
           ) : null}
-          <span className="">{tab.title}</span>
         </motion.p>
       ))}
     </div>

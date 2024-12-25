@@ -2,10 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
   isVisible: boolean;
-  setSelectedGame: (index: number | null) => void;
+  onClick: () => void;
 };
 
-const Backdrop = ({ isVisible, setSelectedGame }: Props) => {
+const Backdrop = ({ isVisible, onClick }: Props) => {
   return (
     <AnimatePresence>
       {isVisible && (
@@ -14,7 +14,7 @@ const Backdrop = ({ isVisible, setSelectedGame }: Props) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2, type: "tween" }}
-          onClick={() => setSelectedGame(null)}
+          onClick={onClick}
           className="bg-black/50 fixed inset-0 z-30"
         />
       )}

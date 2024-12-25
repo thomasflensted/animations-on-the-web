@@ -21,7 +21,7 @@ const GamePreview = ({
       layoutId={`container-${name}`}
       onClick={() => setSelectedGame(index)}
       key={name}
-      className={`w-full py-2 flex items-center cursor-pointer justify-between ${
+      className={`py-2 flex items-center cursor-pointer justify-between ${
         showBottomBorder ? "border-b" : ""
       }`}
     >
