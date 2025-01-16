@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import LoginBtn from "./LoginBtn";
 import { useOnClickOutside } from "usehooks-ts";
 import { AnimatePresence, motion } from "framer-motion";
-import { set } from "zod";
 
 const FeedbackPopover = () => {
   const feedbackRef = useRef<HTMLDivElement | null>(null);

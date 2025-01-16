@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Game } from "../animations/GamesAnimation";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 type Props = {
   setSelectedGame: Dispatch<SetStateAction<number | null>>;
