@@ -6,6 +6,7 @@ import { useState } from "react";
 import GameModal from "../components/GameModal";
 import GamePreview from "../components/GamePreview";
 import Backdrop from "../components/Backdrop";
+import { AnimatePresence } from "framer-motion";
 
 const GamesAnimation = () => {
   const [selectedGame, setSelectedGame] = useState<number | null>(null);
@@ -16,12 +17,14 @@ const GamesAnimation = () => {
         isVisible={selectedGame !== null}
         onClick={() => setSelectedGame(null)}
       />
-      {selectedGame !== null && (
-        <GameModal
-          setSelectedGame={setSelectedGame}
-          game={games[selectedGame]}
-        />
-      )}
+      <AnimatePresence>
+        {selectedGame !== null && (
+          <GameModal
+            setSelectedGame={setSelectedGame}
+            game={games[selectedGame]}
+          />
+        )}
+      </AnimatePresence>
       <div className="w-1/3 z-20">
         {games.map((game, index) => (
           <GamePreview

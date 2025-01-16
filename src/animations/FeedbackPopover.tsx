@@ -1,53 +1,58 @@
 import { useRef, useState } from "react";
 import LoginBtn from "./LoginBtn";
 import { useOnClickOutside } from "usehooks-ts";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const FeedbackPopover = () => {
   const feedbackRef = useRef<HTMLDivElement | null>(null);
   const [feedback, setFeedback] = useState("");
-  const [feedbackToggled, setFeedbackToggled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  useOnClickOutside(feedbackRef, () => setFeedbackToggled(false));
+  useOnClickOutside(feedbackRef, () => setOpen(false));
 
-  return feedbackToggled ? (
-    <motion.div
-      layoutId="container"
-      className="p-1 bg-gray-100 border rounded-xl w-1/4"
-      ref={feedbackRef}
-    >
-      <div className="bg-white border rounded-lg flex flex-col overflow-hidden items-end p-2 relative">
-        <textarea
-          onChange={(e) => setFeedback(e.target.value)}
-          rows={6}
-          className="resize-none text-left w-full bg-white outline-none text-gray-600 text-sm font-light"
-        />
-        {!feedback && (
-          <motion.p
-            layoutId="feedback"
-            className="text-gray-400 text-sm font-light absolute top-2 left-2"
+  const containerId = "container";
+  const placeholderId = "placeholder";
+
+  return (
+    <div className="w-full flex justify-center items-center relative">
+      <motion.button
+        layoutId={containerId}
+        onClick={() => setOpen(true)}
+        className="border rounded-lg px-3 py-1.5 text-sm font-light text-gray-600 cursor-pointer relative"
+      >
+        <motion.span layoutId={placeholderId}>Feedback</motion.span>
+      </motion.button>
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            layoutId={containerId}
+            ref={feedbackRef}
+            className="bg-gray-100 p-1 rounded-md h-[192px] w-[364px] absolute"
           >
-            Feedback
-          </motion.p>
-        )}
-        <LoginBtn
-          size="sm"
-          content={{
-            idle: "Send feedback",
-            loading: "Sending...",
-            success: "Feedback sent",
-          }}
-        />
-      </div>
-    </motion.div>
-  ) : (
-    <motion.button
-      layoutId="container"
-      onClick={() => setFeedbackToggled(true)}
-      className="border rounded-lg px-3 py-1.5 text-xs text-gray-600 hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
-    >
-      <motion.span layoutId="feedback">Feedback</motion.span>
-    </motion.button>
+            <div className="bg-white rounded-md h-full w-full py-2 px-2.5 flex flex-col items-end">
+              <motion.span
+                className="absolute  top-3 left-4 text-gray-500 text-sm"
+                layoutId={placeholderId}
+              >
+                Feedback
+              </motion.span>
+              <textarea
+                onChange={(e) => setFeedback(e.target.value)}
+                className="resize-none w-full text-sm outline-none flex-grow"
+              />
+              <LoginBtn
+                size="sm"
+                content={{
+                  idle: "Send feedback",
+                  loading: "Sending...",
+                  success: "Thanks!",
+                }}
+              />
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </div>
   );
 };
 export default FeedbackPopover;
