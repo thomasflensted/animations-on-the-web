@@ -7,15 +7,16 @@ type Content = Record<Partial<State>, string>;
 type Props = {
   content: Content;
   size?: "sm" | "lg";
+  timing?: number;
 };
 
-const LoginBtn = ({ content, size = "lg" }: Props) => {
+const LoginBtn = ({ content, size = "lg", timing = 1250 }: Props) => {
   const [status, setStatus] = useState<State>("idle");
 
   const handleClick = () => {
     setStatus("loading");
-    setTimeout(() => setStatus("success"), 1250);
-    setTimeout(() => setStatus("idle"), 2500);
+    setTimeout(() => setStatus("success"), timing);
+    setTimeout(() => setStatus("idle"), timing * 2);
   };
 
   const variants = {
