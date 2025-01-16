@@ -10,7 +10,7 @@ const CollapsedCard = ({
     <motion.div
       layoutId="vikingcontainer"
       onClick={() => setIsOpen(true)}
-      className="h-96 w-80 overflow-hidden rounded-lg relative z-30"
+      className="h-96 w-80 overflow-hidden rounded-lg relative z-30 cursor-pointer"
     >
       <motion.img
         layoutId="vikingimage"
