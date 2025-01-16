@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.placeholder[data-feedback="true"] {
+  opacity: 0 !important;
+}
