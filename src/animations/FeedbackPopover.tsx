@@ -13,7 +13,15 @@ const FeedbackPopover = () => {
 
   const containerId = "container";
   const placeholderId = "placeholder";
-  const timing = 1250;
+  const timing = 2000;
+
+  const handleButtonClick = () => {
+    setTimeout(() => setState("success"), timing);
+    setTimeout(() => {
+      setState("idle");
+      setOpen(false);
+    }, timing * 2);
+  };
 
   return (
     <div className="w-full flex justify-center items-center relative">
@@ -34,16 +42,13 @@ const FeedbackPopover = () => {
             {state === "success" ? (
               <AnimatePresence>
                 <motion.div
-                  initial={{ y: -50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 32 }}
+                  initial={{ y: -25 }}
+                  animate={{ y: 0 }}
                   transition={{ type: "spring", duration: 0.4, bounce: 0 }}
-                  className="flex justify-center items-center h-full flex-col"
+                  className="flex justify-center items-center h-full flex-col gap-0"
                 >
-                  <h2 className="text-blue-600 font-semibold text-lg">
-                    Thanks!
-                  </h2>
-                  <p className="text-gray-600 text-sm">
+                  <h2 className="text-blue-600 font-semibold ">Thanks!</h2>
+                  <p className="text-gray-500 text-xs font-medium">
                     You feedback is important to us.
                   </p>
                 </motion.div>
@@ -61,12 +66,7 @@ const FeedbackPopover = () => {
                   onChange={(e) => setFeedback(e.target.value)}
                   className="resize-none w-full text-sm outline-none flex-grow"
                 />
-                <div
-                  onClick={() => {
-                    setTimeout(() => setState("success"), timing);
-                    setTimeout(() => setOpen(false), timing * 2);
-                  }}
-                >
+                <div onClick={handleButtonClick}>
                   <LoginBtn
                     timing={timing}
                     size="sm"
