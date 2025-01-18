@@ -1,40 +1,16 @@
 import LayoutIdAnimation from "./animations/LayoutIdAnimation";
+import AnimatedScrollbar from "./components/AnimatedScrollbar";
+import FeedbackPopover from "./animations/FeedbackPopover";
 import HighLightedTabs from "./animations/HighLightedTabs";
+import ButtonAnimation from "./animations/ButtonAnimation";
 import GamesAnimation from "./animations/GamesAnimation";
 import GameOfTheDay from "./animations/GameOfTheDay";
 import Container from "./components/Container";
 import DrawerOne from "./animations/DrawerOne";
-import FeedbackPopover from "./animations/FeedbackPopover";
-import ButtonAnimation from "./animations/ButtonAnimation";
-import { useEffect, useRef, useState } from "react";
-import AnimatedScrollbar from "./components/AnimatedScrollbar";
+import { useState } from "react";
 
 function App() {
   const [animationInView, setAnimationInView] = useState<number | null>(null);
-  const containerRefs = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    const containerRefsForCleanup = containerRefs.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = containerRefs.current.indexOf(
-            entry.target as HTMLDivElement
-          );
-          if (entry.isIntersecting && index !== -1) {
-            setAnimationInView(index);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    containerRefs.current.forEach((ref) => ref && observer.observe(ref));
-
-    return () => {
-      containerRefsForCleanup.forEach((ref) => ref && observer.unobserve(ref));
-    };
-  }, []);
 
   const animations = [
     ButtonAnimation,
@@ -55,10 +31,7 @@ function App() {
         />
       </div>
       {animations.map((Animation, index) => (
-        <Container
-          ref={(el: HTMLDivElement) => (containerRefs.current[index] = el)}
-          key={index}
-        >
+        <Container key={index} onInView={setAnimationInView} index={index}>
           <Animation />
         </Container>
       ))}
