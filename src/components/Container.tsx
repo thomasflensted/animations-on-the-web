@@ -1,11 +1,16 @@
-import { ReactNode } from "react";
+import { forwardRef } from "react";
 
-const Container = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="h-screen flex items-center justify-center border-b w-full snap-start">
-      {children}
-    </div>
-  );
-};
+const Container = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
+  ({ children }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className="h-screen flex items-center justify-center border-b w-full snap-start"
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 export default Container;
