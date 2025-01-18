@@ -13,7 +13,7 @@ const GameModal = ({ game }: Props) => {
     <motion.div
       layoutId={`container-${name}`}
       onClick={(e) => e.stopPropagation()}
-      className="bg-white w-1/3 rounded-md flex flex-col p-4 fixed top-1/3 z-30"
+      className="bg-white w-1/3 rounded-md flex flex-col p-4 fixed top-1/3 z-30 overflow-hidden"
     >
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">

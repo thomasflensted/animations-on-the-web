@@ -23,7 +23,7 @@ function App() {
   ];
 
   return (
-    <div className="h-screen w-full snap-y snap-mandatory overflow-y-scroll no-scrollbar relative">
+    <div className="h-screen w-full snap-y snap-mandatory overflow-y-scroll no-scrollbar">
       <div className="h-full fixed right-0 flex flex-col justify-around pr-4">
         <AnimatedScrollbar
           animationInView={animationInView}
