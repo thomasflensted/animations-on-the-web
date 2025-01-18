@@ -1,8 +1,27 @@
-import { ReactNode } from "react";
+import { useInView } from "framer-motion";
+import { ReactNode, useEffect, useRef } from "react";
 
-const Container = ({ children }: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode;
+  onInView: (index: number) => void;
+  index: number;
+};
+
+const Container = ({ children, onInView, index }: Props) => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(sectionRef, { amount: 0.4 });
+
+  useEffect(() => {
+    if (isInView) {
+      onInView(index);
+    }
+  }, [isInView, index, onInView]);
+
   return (
-    <div className="h-screen flex items-center justify-center border-b w-full snap-start">
+    <div
+      ref={sectionRef}
+      className="h-screen flex items-center justify-center border-b w-full snap-start"
+    >
       {children}
     </div>
   );
