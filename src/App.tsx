@@ -8,6 +8,7 @@ import DrawerOne from "./animations/DrawerOne";
 import { useState } from "react";
 import Container from "./components/Container";
 import StepAnimation from "./animations/StepAnimation";
+import Trash from "./animations/Trash";
 
 function App() {
   const [animationInView, setAnimationInView] = useState<number | null>(null);
@@ -20,6 +21,7 @@ function App() {
     GameOfTheDay,
     FeedbackPopover,
     StepAnimation,
+    Trash,
   ];
 
   return (
