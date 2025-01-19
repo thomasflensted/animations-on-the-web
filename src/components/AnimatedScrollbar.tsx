@@ -9,12 +9,12 @@ const AnimatedScrollbar = ({ animationInView, length }: Props) => {
   return (
     <>
       {Array.from({ length }, (_, index) => (
-        <div key={index} className={`h-2 w-2 bg-gray-300 rounded-full`}>
+        <div
+          key={index}
+          className={`h-2 w-2 bg-gray-300 rounded-full cursor-pointer`}
+        >
           {index === animationInView && (
             <motion.div
-              initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
-              style={{ transformOrigin: "center" }}
               layoutId="dot"
               className="h-3 w-3 bg-gray-600 rounded-full z-10"
             />

@@ -1,13 +1,13 @@
-import LayoutIdAnimation from "./animations/LayoutIdAnimation";
 import AnimatedScrollbar from "./components/AnimatedScrollbar";
 import FeedbackPopover from "./animations/FeedbackPopover";
 import HighLightedTabs from "./animations/HighLightedTabs";
 import ButtonAnimation from "./animations/ButtonAnimation";
 import GamesAnimation from "./animations/GamesAnimation";
 import GameOfTheDay from "./animations/GameOfTheDay";
-import Container from "./components/Container";
 import DrawerOne from "./animations/DrawerOne";
 import { useState } from "react";
+import Container from "./components/Container";
+import StepAnimation from "./animations/StepAnimation";
 
 function App() {
   const [animationInView, setAnimationInView] = useState<number | null>(null);
@@ -16,10 +16,10 @@ function App() {
     ButtonAnimation,
     DrawerOne,
     HighLightedTabs,
-    LayoutIdAnimation,
     GamesAnimation,
     GameOfTheDay,
     FeedbackPopover,
+    StepAnimation,
   ];
 
   return (
@@ -31,7 +31,7 @@ function App() {
         />
       </div>
       {animations.map((Animation, index) => (
-        <Container key={index} onInView={setAnimationInView} index={index}>
+        <Container key={index} handleInView={setAnimationInView} index={index}>
           <Animation />
         </Container>
       ))}
