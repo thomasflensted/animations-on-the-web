@@ -8,7 +8,7 @@ const StepAnimation = () => {
   const Content = [StepOne, StepTwo, StepThree][step];
 
   return (
-    <MotionConfig transition={{ duration: 2, type: "spring", bounce: 0 }}>
+    <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
       <StepContainer setDirection={setDirection} setStep={setStep} step={step}>
         <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
