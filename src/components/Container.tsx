@@ -3,19 +3,17 @@ import { ReactNode, useEffect, useRef } from "react";
 
 type Props = {
   children: ReactNode;
-  onInView: (index: number) => void;
+  handleInView: (index: number) => void;
   index: number;
 };
 
-const Container = ({ children, onInView, index }: Props) => {
+const Container = ({ children, handleInView, index }: Props) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(sectionRef, { amount: 0.4 });
 
   useEffect(() => {
-    if (isInView) {
-      onInView(index);
-    }
-  }, [isInView, index, onInView]);
+    if (isInView) handleInView(index);
+  }, [isInView, index, handleInView]);
 
   return (
     <div

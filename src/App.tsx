@@ -5,7 +5,6 @@ import HighLightedTabs from "./animations/HighLightedTabs";
 import ButtonAnimation from "./animations/ButtonAnimation";
 import GamesAnimation from "./animations/GamesAnimation";
 import GameOfTheDay from "./animations/GameOfTheDay";
-import Container from "./components/Container";
 import DrawerOne from "./animations/DrawerOne";
 import { useState } from "react";
 
